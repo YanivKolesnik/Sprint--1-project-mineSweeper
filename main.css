@@ -1,0 +1,37 @@
+body{
+    text-align: center;
+  background-color: lightblue;
+}
+h1{
+    color: red;
+}
+table{
+    margin-left: 670px;
+    margin-top: 10px;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background: gray;
+    border: 1px solid black;
+}
+.cell img {
+    width: 25px;
+    height: auto
+}
+button{
+    margin-bottom:10px;
+    color: lightcoral;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0.25em, transparent 0.25em) center/1em 1.2em;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    border-radius: 20px/50px;
+    border: 2px solid #fdacac;
+    transition: all 0.5s ease 0s;
+}
+
