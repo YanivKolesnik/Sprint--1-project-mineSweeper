@@ -7,22 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mine Sweeper</title>
     <link rel="stylesheet" href="main.css">
-
 </head>
 
 
-
-<body onkeyup="handleKey(event)" onload="initGame()">
+<body onload="initGame()">
     <h1>Mine Sweeper Game</h1>
-    <script src="util.js"></script>
-    <script src="main.js"></script>
-    <button>Easy</button>
-    <button>Medium</button>
-    <button>Hard</button>
-    <table>
+    <button onclick="setDifficulty(1)">Easy</button>
+    <button onclick="setDifficulty(2)">Medium</button>
+    <button onclick="setDifficulty(3)">Hard</button>
+
+    <div onclick="initGame()" class="smiley"></div>
+
+    <div class="lives"></div>
+    <table border="1" class="table">
         <tbody class="board"></tbody>
     </table>
-   
+    
+    
+    <script src="main.js"></script>
+    <script src="util.js"></script>
 </body>
 
 </html>
