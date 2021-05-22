@@ -15,15 +15,34 @@
     <button onclick="setDifficulty(1)">Easy</button>
     <button onclick="setDifficulty(2)">Medium</button>
     <button onclick="setDifficulty(3)">Hard</button>
+    <button type="button" onclick="play()">Sound ON</button>
+    <audio id="audio" src="audio/audio.mp3"></audio>
 
     <div onclick="initGame()" class="smiley"></div>
+    <div class="rightside">
+        <div class="time">
+            <span class="minutes">00</span>:<span class="seconds">00</span>
+        </div>
+        <div class="lives"></div>
+    </div>
+    <div class="border">
+        <div class="flags">number of flags : </div>
 
-    <div class="lives"></div>
+        <span class="Mines">
+            <h1>number of Mines : </h1>:
+        </span>
+
+
+
+
+
+    </div>
+
+
+
     <table border="1" class="table">
         <tbody class="board"></tbody>
     </table>
-    
-    
     <script src="main.js"></script>
     <script src="util.js"></script>
 </body>

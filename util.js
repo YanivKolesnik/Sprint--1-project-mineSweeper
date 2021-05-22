@@ -2,17 +2,22 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function createMat(gBoard, rows, cols) {
-    var mat = []
-    for (var i = 0; i < rows; i++) {
-        var row = []
-        for (var j = 0; j < cols; j++) {
-            row.push(gBoard);
+function createMat(gBoard, size) {
+    var board = [];
+    for (var i = 0; i < size; i++) {
+        board[i] = []
+        for (var j = 0; j < size; j++) {
+            board[i][j] = {
+                minesAroundCount: gBoard.minesAroundCount,
+                isShown: gBoard.isShown,
+                isMine: gBoard.isMine,
+                isMarked: gBoard.isMarked
+            };
         }
-        mat.push(row);
     }
-    return mat;
+    return board
 }
+
 
 function cellMinesAround(board, cellI, cellJ) {
     var cellArea = {
@@ -25,22 +30,31 @@ function cellMinesAround(board, cellI, cellJ) {
         if (i < 0 || i >= board.length) continue;
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
             if (j < 0 || j >= board[i].length) continue;
-
             if (i === cellI && j === cellJ) {
-                cellArea.currentCell.push({ i, j });
+                cellArea.currentCell.push({
+                    i,
+                    j
+                });
                 continue;
             }
-
             var currCell = board[i][j];
-            if (currCell.isMine) cellArea.minesAround.push({ i, j });
+            if (currCell.isMine) cellArea.minesAround.push({
+                i,
+                j
+            });
             if (!currCell.isShown) {
-                (currCell.minesAroundCount) ? cellArea.numberedCells.push({ i, j }) : cellArea.emptyCells.push({ i, j });
+                (currCell.minesAroundCount) ? cellArea.numberedCells.push({
+                    i,
+                    j
+                }): cellArea.emptyCells.push({
+                    i,
+                    j
+                });
             }
         }
     }
     return cellArea.minesAround.length;
 }
-
 
 function expand(coordI, coordJ) {
     var expandCount = 0;
@@ -57,4 +71,27 @@ function expand(coordI, coordJ) {
         }
     }
     return expandCount;
+}
+
+function startTimer() {
+    var elMinutes = document.querySelector('.minutes');
+    var elSeconds = document.querySelector('.seconds');
+    gGame.secsPassed++;
+
+    elSeconds.innerHTML = addZero(gGame.secsPassed % 60);
+    elMinutes.innerHTML = addZero(parseInt(gGame.secsPassed / 60));
+}
+
+function addZero(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+        return "0" + valString;
+    } else {
+        return valString;
+    }
+}
+
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
 }
